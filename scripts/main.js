@@ -1,6 +1,6 @@
 try {
-	require("teleport");
-	require("ui");
+	require("menuUI");
+	require("hudUI");
 } catch (e) {
 	log("Sefirah: ERROR", e);
 }

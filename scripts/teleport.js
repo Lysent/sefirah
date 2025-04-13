@@ -6,6 +6,7 @@ const tpclick = () => {
 const tilesize = Vars.tilesize;
 const spawnTeam = Team.get(Core.settings.getInt("tu-default-team", 1));
 let radius = 2;
+let teleporting = false;
 
 const isClick = () => Vars.mobile ? Core.input.isTouched() : Core.input.keyDown(KeyCode.mouseLeft);
 
@@ -34,15 +35,28 @@ const drawPos = () => {
 }
 
 Events.run(Trigger.draw, () => {
-    Draw.z(Layer.overlayUI + 0.04);
-    drawPos();
-    Draw.reset();
+    if (teleporting) {
+        Draw.z(Layer.overlayUI + 0.04);
+        drawPos();
+        Draw.reset();
+    }
 });
 
 Events.run(Trigger.update, () => {
-    if (!(Vars.state.isGame() && isClick() && !hasMouse())) return;
-
-    log("Sefirah", "Click buddy hoo");
+    if (!(Vars.state.isGame() && isClick() && !hasMouse() && teleporting)) return;
 
     tpclick();
-})
+    teleporting = false;
+});
+
+const teleportButton = table => {
+    table.table(Tex.buttonEdge3, t => {
+        t.name = "sefirah-hud";
+
+        const b = t.button(new TextureRegionDrawable(Icon.planet), 24, () => teleporting = true)
+            .padLeft(6).get();
+        b.getStyle().imageUpColor = Pal.accent;
+    });
+}
+
+module.exports = teleportButton;
