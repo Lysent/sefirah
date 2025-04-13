@@ -1,3 +1,5 @@
+const techDialog = require("tech");
+
 const mainMenu = () => {
 	let dialog;
 
@@ -30,15 +32,9 @@ const mainMenu = () => {
 	
 		SectorDialog.cont["table(arc.func.Cons)"](t => {
 			t.defaults().size(64 * 4, 64).pad(3);
-			t.button("Unlock Serpulo Tech", Icon.planet, () => {
-				techDialog(serpulo);
-			});
-			t.button("Unlock Erekir Tech", Icon.planet, () => {
-				techDialog(erekir);
-			});
-			t.button("Unlock All Tech", Icon.settings, () => {
-				techDialog(all);
-			});
+			t.button("Unlock Serpulo Tech", Icon.planet, () => techDialog("serpulo"));
+			t.button("Unlock Erekir Tech", Icon.planet, () => techDialog("erekir"));
+			t.button("Unlock All Tech", Icon.settings, () => techDialog(null, true));
 		}).center().fillX().row();
 
 		SectorDialog.cont["table(arc.func.Cons)"](t => {
