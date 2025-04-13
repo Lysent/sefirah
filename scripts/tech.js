@@ -1,9 +1,11 @@
 const gatherNodes = techNodes => {
     const children = [];
 
-    techNodes.forEach(node => node.children && children.push.apply(null, node.children));
+    techNodes
+        .filter(node => node !== null && node.children !== null)
+        .forEach(node => node.children.forEach(child => children.push(child)));
 
-    if (children.length > 0) children.push.apply(null, gatherNodes.apply(null, children));
+    if (children.length > 0) gatherNodes(children).forEach(node => children.push(node));
 
     const nodes = techNodes.concat(children);
 
@@ -16,7 +18,18 @@ const techUnlock = planet => {
 
     const nodes = gatherNodes([root]);
 
-    log("Sefirah", `Collected ${nodes.length} nodes from ${planetName}.`);
+    log("Sefirah", "Collected " + nodes.length + " nodes from " + planet.name + ".");
+
+    let unlocked = 0;
+
+    nodes.forEach(n => {
+        if (n.content.locked()) {
+            n.content.unlock();
+            unlocked++;
+        }
+    });
+
+    log("Sefirah", "unlocked " + unlocked + " locked nodes from " + planet.name + ".");
 };
 
 const techUnlockAll = () => Vars.content.planets().forEach(p => techUnlock(p));
