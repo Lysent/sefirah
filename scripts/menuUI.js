@@ -34,13 +34,23 @@ const mainMenu = () => {
 			t.defaults().size(64 * 4, 64).pad(3);
 			t.button("Unlock Serpulo Tech", Icon.planet, () => techDialog("serpulo"));
 			t.button("Unlock Erekir Tech", Icon.planet, () => techDialog("erekir"));
+		}).center().fillX().row();
+
+		SectorDialog.cont["table(arc.func.Cons)"](t => {
+			t.defaults().size(64 * 4, 64).pad(3);
+			t.button("Unlock Neoulandia Tech", Icon.planet, () => techDialog("etigeox-Neoulandia"));
+			t.button("Unlock Rubiginosus Tech", Icon.planet, () => techDialog("etigeox-Rubiginosus"));
+		}).center().fillX().row();
+
+		SectorDialog.cont["table(arc.func.Cons)"](t => {
+			t.defaults().size(64 * 4, 64).pad(3);
 			t.button("Unlock All Tech", Icon.settings, () => techDialog(null, true));
 		}).center().fillX().row();
 
 		SectorDialog.cont["table(arc.func.Cons)"](t => {
-			t.defaults().size(192 * 4, 64).pad(3);
+			t.defaults().size(64 * 4, 64).pad(3);
 			t.button("@close", Icon.cancel, () => SectorDialog.hide());
-		}).center().fillX();
+		}).center().fillX().padTop(128);
 	
 		SectorDialog.show();
 	};
