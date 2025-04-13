@@ -22,6 +22,7 @@ const techUnlock = planet => {
 const techUnlockAll = () => Vars.content.planets().forEach(p => techUnlock(p));
 
 const techDialog = (planetName, all) => {
+    log("Sefirah", "unlocking");
     Vars.ui.showCustomConfirm(
         "Unlocking Tech Tree", "Do you wish to unlock all tech for this planet?",
         "@ok", "@cancel",

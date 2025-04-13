@@ -25,21 +25,6 @@ const mainMenu = () => {
 		});
 	};
 
-	const techUnlock = () => {
-		TechTree.all.forEach(n => n.content.locked() && n.content.unlock());
-	}
-	
-	const techDialog = () => {
-		Vars.ui.showCustomConfirm(
-		"Unlocking Tech Tree", "Do you wish to unlock all tech for this planet?",
-			"@ok", "@cancel",
-			() => {
-				techUnlock();
-			},
-			() => { }
-		);
-	};
-
 	const techSelectDialog = () => {
 		const SectorDialog = new BaseDialog("Sefirah Castle");
 	
