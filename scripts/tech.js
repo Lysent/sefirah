@@ -1,9 +1,11 @@
 const gatherNodes = techNodes => {
     const children = [];
 
-    techNodes.forEach(node =>  log("Sefirah", node.children));
+    techNodes.forEach(node => log("Sefirah", node.children));
 
-    techNodes.forEach(node => (node.children === null) || children.push.apply(null, Array.from(node.children)));
+    techNodes
+        .filter(node => node !== null && node.children !== null)
+        .forEach(node => children.push.apply(null, Array.from(node.children)));
 
     if (children.length > 0) children.push.apply(null, gatherNodes.apply(null, children));
 
