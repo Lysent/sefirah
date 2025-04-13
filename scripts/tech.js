@@ -5,7 +5,7 @@ const gatherNodes = techNodes => {
 
     techNodes
         .filter(node => node !== null && node.children !== null)
-        .forEach(node => children.push.apply(null, Array.from(node.children)));
+        .forEach(node => children.push.apply(children, node.children));
 
     if (children.length > 0) children.push.apply(null, gatherNodes.apply(null, children));
 
