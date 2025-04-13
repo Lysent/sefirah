@@ -1,2 +1,3 @@
 require("teleport");
-require("ui");
+require("menuUI");
+require("hudUI");
