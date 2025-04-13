@@ -1,6 +1,6 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Lysent/sefirah?style=for-the-badge&label=Commit%20Activity)
 ![GitHub repo size](https://img.shields.io/github/repo-size/lysent/sefirah?style=for-the-badge&label=Mod%20Size)
-![GitHub Created At](https://img.shields.io/github/created-at/superwibr/sefirah?style=for-the-badge&label=Created%20in)
+![GitHub Created At](https://img.shields.io/github/created-at/lysent/sefirah?style=for-the-badge&label=Created%20in)
 
 ## **Sefirah Castle**
 
