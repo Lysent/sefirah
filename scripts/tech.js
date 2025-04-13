@@ -1,7 +1,9 @@
 const gatherNodes = techNodes => {
     const children = [];
 
-    techNodes.forEach(node => node.children && children.push.apply(null, node.children));
+    techNodes.forEach(node =>  log("Sefirah", node.children));
+
+    techNodes.forEach(node => node.children && children.push.apply(null, Array.from(node.children)));
 
     if (children.length > 0) children.push.apply(null, gatherNodes.apply(null, children));
 
