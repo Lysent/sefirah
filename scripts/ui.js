@@ -23,6 +23,21 @@ const mainMenu = () => {
 		});
 	};
 
+	const techUnlock = () => {
+		TechTree.all.forEach(n => n.content.locked() && n.content.unlock());
+	}
+	
+	const techDialog = () => {
+		Vars.ui.showCustomConfirm(
+		"Unlocking Tech Tree", "Do you wish to unlock all tech for this planet?",
+			"@ok", "@cancel",
+			() => {
+				techUnlock();
+			},
+			() => { }
+		);
+	};
+
 	const techSelectDialog = () => {
 		const SectorDialog = new BaseDialog("Sefirah Castle");
 	
@@ -31,13 +46,13 @@ const mainMenu = () => {
 		SectorDialog.cont["table(arc.func.Cons)"](t => {
 			t.defaults().size(64 * 4, 64).pad(3);
 			t.button("Unlock Serpulo Tech", Icon.planet, () => {
-				techDialog(serpulo);
+				techDialog();
 			});
 			t.button("Unlock Erekir Tech", Icon.planet, () => {
-				techDialog(erekir);
+				techDialog();
 			});
 			t.button("Unlock All Tech", Icon.settings, () => {
-				techDialog(all);
+				techDialog();
 			});
 		}).center().fillX().row();
 
