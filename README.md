@@ -7,10 +7,11 @@
 Testing tools mod for better mod playtesting and debugging. Made in response to some utility mods being no longer updated for Mindustry v8.
 
 Current Features:
--Unlocking Tech Trees
--Teleporation
+- Unlocking Tech Trees
+- Teleporation
 
 Unlocking tech trees works for all mods, with the "unlock all tech" option.
+
 
 Icon and name a reference to Lord of Mysteries.
 
